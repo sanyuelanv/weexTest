@@ -7,7 +7,7 @@
 //
 
 #import "Global.h"
-NSString *JSURL= @"http://172.20.0.56:8081/dist/index.js?_wx_tpl=http://172.20.0.56:8081/dist/index.js";
+NSString *JSURL= @"http://192.168.123.171:8081/dist/index.js?_wx_tpl=http://192.168.123.171:8081/dist/index.js";
 @implementation Global
 
 @end

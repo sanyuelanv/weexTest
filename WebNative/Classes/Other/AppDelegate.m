@@ -34,8 +34,8 @@
 
 -(void)setUpWeex{
     // 设置配置
-    [WXAppConfiguration setAppGroup:@"qiubai"];
-    [WXAppConfiguration setAppName:@"qiubaiTest"];
+    [WXAppConfiguration setAppGroup:@"test"];
+    [WXAppConfiguration setAppName:@"test"];
     [WXAppConfiguration setAppVersion:@"0.0.1"];
     //设置SDK环境
     [WXSDKEngine initSDKEnvironment];
@@ -43,10 +43,10 @@
     [WXSDKEngine registerHandler:[WXImgLoader new] withProtocol:@protocol(WXImgLoaderProtocol)];
     // 定义一个查询系统信息的模块
     [WXSDKEngine registerModule:@"systemApi" withClass:[WxHelper class]];
-    // 定义一个组件
+    // 定义一个可以拖动的组件
     [WXSDKEngine registerComponent:@"moveView" withClass:[MoveComponent class]];
     //set the log level
-//    [WXLog setLogLevel: WXLogLevelAll];
+    [WXLog setLogLevel: WXLogLevelAll];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

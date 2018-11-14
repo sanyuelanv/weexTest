@@ -7,6 +7,7 @@ target 'WebNative' do
 
   # Pods for WebNative
   pod 'WeexSDK', '0.18.0.3'   ## 建议使用WeexSDK新版本
+  pod 'AFNetworking', '~> 3.2.1'
   pod 'SDWebImage', '~> 5.0.0-beta3'
 
   target 'WebNativeTests' do

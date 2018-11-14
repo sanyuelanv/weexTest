@@ -10,7 +10,7 @@
 #import "WeexViewController.h"
 #import "Global.h"
 @interface HomeViewController ()
-
+@property (nonatomic,weak)UITextField *textField;
 @end
 
 @implementation HomeViewController
@@ -20,19 +20,40 @@
     self.navigationItem.title = @"首页";
     self.navigationController.navigationBar.translucent= NO;
     self.view.backgroundColor = UIColor.whiteColor;
-    [self setUpBtn];
+    [self setUpWeexConfig];
 }
--(void)setUpBtn{
+-(void)setUpWeexConfig{
+    // 按钮
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-    btn.frame = CGRectMake(self.view.frame.size.width/2 - 50, self.view.frame.size.height/2 - 25, 100, 50);
+    btn.frame = CGRectMake(self.view.frame.size.width/2 - 50, 200, 100, 50);
     [btn setTitle:@"进入" forState:UIControlStateNormal];
     [btn setBackgroundColor:UIColor.redColor];
     [btn addTarget:self action:@selector(btnEvent) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    // 输入框
+    UITextField *textField = [[UITextField alloc] init];
+    textField.frame = CGRectMake(10, 100, self.view.frame.size.width - 20, 50);
+    textField.backgroundColor = UIColor.grayColor;
+    self.textField = textField;
+    [self.view addSubview:textField];
+    // 读取存储数据
+     NSString *str = [[NSUserDefaults standardUserDefaults] objectForKey:@"testURL"];
+    if(str||str.length){
+        self.textField.text = str;
+    }
+    else{
+        self.textField.text = @"http://172.20.0.56/test/index.js";
+    }
 }
 -(void)btnEvent{
-    WeexViewController *weexVc = [[WeexViewController alloc] initWithURL:JSURL];
-    [self.navigationController pushViewController:weexVc animated:YES];
+    
+    NSString *str = self.textField.text;
+    if(str.length){
+        [[NSUserDefaults standardUserDefaults] setObject:str forKey:@"testURL"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        WeexViewController *weexVc = [[WeexViewController alloc] initWithURL:str];
+        [self.navigationController pushViewController:weexVc animated:YES];
+    }
 }
 
 /*

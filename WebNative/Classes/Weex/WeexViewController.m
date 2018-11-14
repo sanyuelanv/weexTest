@@ -14,16 +14,15 @@
 @property (nonatomic,weak) UIView *weexView;
 @property (nonatomic,weak) UIView *mainView;
 @property (nonatomic,weak) UILabel *loadLabel;
-@property (nonatomic,weak) NSString *url;
+@property (nonatomic,strong) NSString *urlStr;
 @property (nonatomic,weak) UIButton *reloadBtn;
 @end
 
 @implementation WeexViewController
 -(instancetype)initWithURL:(NSString *)url{
     self = [super init];
-    self.url = url;
+    self.urlStr = url;
     return self;
-    
 }
 #pragma mark - 懒加载
 - (UIButton *)reloadBtn{
@@ -52,11 +51,9 @@
 -(void)setUpReload{
     // 注意层次
     [self.loadLabel setText:@"加载中"];
-    
     UIView *view = [[UIView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:view];
     self.mainView = view;
-    
     [self.reloadBtn setTitle:@"刷新" forState:UIControlStateNormal];
     [self.view setBackgroundColor:UIColor.whiteColor];
 }
@@ -86,7 +83,7 @@
     _instance.renderFinish = ^ (UIView *view) {
         //process renderFinish
     };
-    NSURL *url = [[NSURL alloc] initWithString:self.url];
+    NSURL *url = [[NSURL alloc] initWithString:self.urlStr];
     [_instance renderWithURL:url];
 }
 #pragma mark - 系统方法

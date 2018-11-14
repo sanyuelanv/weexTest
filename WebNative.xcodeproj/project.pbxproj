@@ -149,8 +149,6 @@
 			children = (
 				E74FBBC5219AA55F0049E527 /* ReloadButton.h */,
 				E74FBBC6219AA55F0049E527 /* ReloadButton.m */,
-				E7878EC2219ADAFE00D9C638 /* MoveView.h */,
-				E7878EC3219ADAFE00D9C638 /* MoveView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -162,6 +160,15 @@
 				E7878EC7219ADE5F00D9C638 /* MoveComponent.m */,
 			);
 			path = compoment;
+			sourceTree = "<group>";
+		};
+		E7878EC9219BCE9400D9C638 /* compomentView */ = {
+			isa = PBXGroup;
+			children = (
+				E7878EC2219ADAFE00D9C638 /* MoveView.h */,
+				E7878EC3219ADAFE00D9C638 /* MoveView.m */,
+			);
+			path = compomentView;
 			sourceTree = "<group>";
 		};
 		E7A18F3A21998E7D00420A85 /* Helper */ = {
@@ -253,6 +260,7 @@
 		E7C272DE2199772F00390124 /* Weex */ = {
 			isa = PBXGroup;
 			children = (
+				E7878EC9219BCE9400D9C638 /* compomentView */,
 				E74FBBC4219AA5410049E527 /* View */,
 				E7C272DF2199773A00390124 /* WeexViewController.h */,
 				E7C272E02199773A00390124 /* WeexViewController.m */,
